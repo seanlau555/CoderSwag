@@ -1,11 +1,13 @@
 package com.sparktake.coderswag.Controller
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.sparktake.coderswag.Adapters.CategoryRecycleAdapter
 import com.sparktake.coderswag.R
 import com.sparktake.coderswag.Services.DataService
+import com.sparktake.coderswag.Utilities.EXTRA_CATEGORY
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +19,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 //        adapter = CategoryRecycleAdapter(this, DataService.categories)
         adapter = CategoryRecycleAdapter(this, DataService.categories) { category ->
-            println(category.title)
+            var productIntent = Intent(this, ProductsActivity::class.java)
+            productIntent.putExtra(EXTRA_CATEGORY, category.title)
+            startActivity(productIntent)
 
         }
         categoryListView.adapter = adapter
