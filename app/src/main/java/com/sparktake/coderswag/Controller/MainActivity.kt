@@ -24,12 +24,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(productIntent)
 
         }
-        categoryListView.adapter = adapter
 
 
         val layoutManager = LinearLayoutManager(this)
         categoryListView.layoutManager = layoutManager
         categoryListView.setHasFixedSize(true)
+        categoryListView.adapter = adapter
 
 
 //        categoryListView.setOnItemClickListener { adapterView, view, i, l ->
